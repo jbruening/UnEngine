@@ -21,16 +21,21 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		UnityTest|Any CPU = UnityTest|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5EA17321-5D9F-45AF-851A-033B959B4024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EA17321-5D9F-45AF-851A-033B959B4024}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EA17321-5D9F-45AF-851A-033B959B4024}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EA17321-5D9F-45AF-851A-033B959B4024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA17321-5D9F-45AF-851A-033B959B4024}.UnityTest|Any CPU.ActiveCfg = UnityTest|Any CPU
+		{5EA17321-5D9F-45AF-851A-033B959B4024}.UnityTest|Any CPU.Build.0 = UnityTest|Any CPU
 		{D9D7DC29-FAD0-4D69-8822-06B3156BD4E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D9D7DC29-FAD0-4D69-8822-06B3156BD4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9D7DC29-FAD0-4D69-8822-06B3156BD4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9D7DC29-FAD0-4D69-8822-06B3156BD4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9D7DC29-FAD0-4D69-8822-06B3156BD4E6}.UnityTest|Any CPU.ActiveCfg = UnityTest|Any CPU
+		{D9D7DC29-FAD0-4D69-8822-06B3156BD4E6}.UnityTest|Any CPU.Build.0 = UnityTest|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

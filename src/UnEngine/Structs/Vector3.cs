@@ -1,6 +1,10 @@
 ﻿using System;
 
+#if DEBUG
+namespace UnEngine
+#else
 namespace UnityEngine
+#endif
 {
     /// <summary>
     /// 
@@ -378,7 +382,7 @@ namespace UnityEngine
         /// <returns></returns>
         public static float Angle(Vector3 from, Vector3 to)
         {
-            return (float)Math.Acos(Mathf.Clamp(Dot(from.normalized, to.normalized), -1f, 1f)) * 57.29578f;
+            return (float)Math.Acos(Mathf.Clamp(Dot(from.normalized, to.normalized), -1f, 1f)) * Mathf.Rad2Deg;
         }
 
         /// <summary>

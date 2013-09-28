@@ -20,8 +20,6 @@ x64/
 *_i.c
 *_p.c
 *.ilk
-*.meta
-*.obj
 *.pch
 *.pdb
 *.pgc
@@ -90,7 +88,6 @@ AppPackages/
 
 # Others
 [Bb]in
-[Oo]bj
 sql
 TestResults
 [Tt]est[Rr]esult*
@@ -109,3 +106,16 @@ UpgradeLog*.XML
 src/Local.testsettings
 src/TraceAndTestImpact.testsettings
 *.vsmdi
+src/UnEngineComparisonTests/Assembly-CSharp-vs.csproj
+src/UnEngineComparisonTests/Assembly-CSharp.csproj
+src/UnEngineComparisonTests/Assembly-CSharp.pidb
+src/UnEngineComparisonTests/Library/
+src/UnEngineComparisonTests/Assets/Plugins/UnEngine.XML
+src/UnEngineComparisonTests/Assets/Plugins/UnEngine.XML.meta
+src/UnEngineComparisonTests/Assets/Plugins/UnEngine.dll
+src/UnEngineComparisonTests/Assets/Plugins/UnEngine.dll.meta
+src/UnEngineComparisonTests/Assets/Plugins/UnEngine.pdb.meta
+src/UnEngineComparisonTests/Temp/
+src/UnEngineComparisonTests/UnEngineComparisonTests-csharp.sln
+src/UnEngineComparisonTests/UnEngineComparisonTests.sln
+src/UnEngineComparisonTests/UnEngineComparisonTests.userprefs

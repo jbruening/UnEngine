@@ -1,6 +1,10 @@
-﻿using UnityEngine;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+#if DEBUG
+using UnEngine;
+#else
+using UnityEngine;
+#endif
 
 namespace UnEngineUnitTests
 {
@@ -84,6 +88,22 @@ namespace UnEngineUnitTests
             Vector3 expected = new Vector3(1f, 1f, 1f);
             Assert.AreEqual(expected, Vector3.one);
             Assert.AreNotEqual(expected, throwAway);
+        }
+
+        /// <summary>
+        ///A test for Set
+        ///</summary>
+        [TestMethod()]
+        public void SetTest()
+        {
+            Vector3 target = new Vector3(3f, 1f, 28.2f);
+            float newX = 50f;
+            float newY = 20f;
+            float newZ = 49.553f;
+            target.Set(newX, newY, newZ);
+
+            var expect = new Vector3(newX, newY, newZ);
+            Assert.AreEqual(expect, target);
         }
     }
 }
