@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 #if DEBUG
 namespace UnEngine
@@ -12,6 +13,8 @@ namespace UnityEngine
         private Vector3 _position;
         private Quaternion _rotation;
         private Transform _parent;
+
+        private List<Transform> _children;
 
         private Vector3 _localScale;
         private Vector3 _localPosition;

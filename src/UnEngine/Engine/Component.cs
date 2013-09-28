@@ -1,4 +1,6 @@
-﻿#if DEBUG
+﻿using System;
+
+#if DEBUG
 namespace UnEngine
 #else
 namespace UnityEngine
@@ -9,15 +11,37 @@ namespace UnityEngine
     /// </summary>
     public class Component : Object
     {
-        public Transform transform;
+        public GameObject gameObject { get; internal set; }
 
-        public Rigidbody rigidbody;
-        private Camera _camera;
+        public Transform transform
+        {
+            get { return GetComponent<Transform>() as Transform; }
+        }
 
+        public Rigidbody rigidbody
+        {
+            get { return GetComponent<Rigidbody>() as Rigidbody; }
+        }
+        
         public Camera camera
         {
-            get { AssertNull(); return _camera; }
-            private set { _camera = value; }
+            get { return GetComponent<Camera>() as Camera; }
+        }
+
+        public Component GetComponent<T>()
+            where T : Component
+        {
+            return GetComponent(typeof (T)) as T;
+        }
+        public Component GetComponent(Type type)
+        {
+            AssertNull();
+            throw new NotImplementedException();
+        }
+        public Component GetComponent(string type)
+        {
+            AssertNull();
+            return gameObject.GetComponent(type);
         }
     }
 }
