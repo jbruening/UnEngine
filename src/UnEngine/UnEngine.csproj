@@ -37,7 +37,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UnityTest|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\UnEngineComparisonTests\Assets\Plugins\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UNENG</DefineConstants>
     <DocumentationFile>..\UnEngineComparisonTests\Assets\Plugins\UnEngine.XML</DocumentationFile>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Camera.cs" />
+    <Compile Include="Engine\Coroutine.cs" />
+    <Compile Include="Components\MonoBehaviour.cs" />
+    <Compile Include="Engine\YieldInstruction.cs" />
     <Compile Include="Engine\Component.cs" />
     <Compile Include="Engine\Debug.cs" />
     <Compile Include="InternalEngine\EngineState.cs" />

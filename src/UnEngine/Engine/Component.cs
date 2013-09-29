@@ -1,6 +1,6 @@
 ﻿using System;
 
-#if DEBUG
+#if UNENG
 namespace UnEngine
 #else
 namespace UnityEngine
@@ -36,7 +36,7 @@ namespace UnityEngine
         public Component GetComponent(Type type)
         {
             AssertNull();
-            throw new NotImplementedException();
+            return gameObject.GetComponent(type);
         }
         public Component GetComponent(string type)
         {

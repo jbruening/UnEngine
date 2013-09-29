@@ -1,12 +1,10 @@
-﻿#if UNENG
+#if UNENG
 namespace UnEngine
 #else
 namespace UnityEngine
 #endif
 {
-    public enum Space
+    public sealed class Coroutine : YieldInstruction
     {
-        World,
-        Self,
     }
 }

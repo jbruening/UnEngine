@@ -1,4 +1,4 @@
-﻿#if DEBUG
+﻿#if UNENG
 namespace UnEngine
 #else
 namespace UnityEngine

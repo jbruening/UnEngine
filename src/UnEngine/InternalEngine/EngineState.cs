@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-#if !DEBUG
+#if !UNENG
 using UnityEngine;
+using Object = UnityEngine.Object;
+
 #endif
 
 namespace UnEngine.InternalEngine

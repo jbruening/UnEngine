@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-#if DEBUG
+#if UNENG
 using UnEngine;
 #else
 using UnityEngine;
