@@ -12,17 +12,33 @@ namespace UnityEngine
     /// </summary>
     public class GameObject : Object
     {
-        private class ComponentData
+
+        private readonly List<Component> _components = new List<Component>();
+
+        public GameObject()
         {
-            public Component Component;
-            public Action Start;
-            public Action OnEnable;
-            public Action OnDisable;
-            public Action Update;
-            public Action LateUpdate;
+            name = "";
+            SetupGameObject(this);
+        }
+        public GameObject(string name)
+        {
+            this.name = name;
+            SetupGameObject(this);
+        }
+        public GameObject(string name, params Type[] components)
+        {
+            this.name = name;
+            SetupGameObject(this);
+            foreach (var t in components)
+            {
+                AddComponent(t);
+            }
         }
 
-        private readonly List<ComponentData> _components = new List<ComponentData>();
+        internal static void SetupGameObject(GameObject gobj)
+        {
+            UnEngine.InternalEngine.EngineState.Instance.Add(gobj);
+        }
 
         public Component AddComponent<T>()
             where T : Component
@@ -30,17 +46,26 @@ namespace UnityEngine
             return AddComponent(typeof (T)) as T;
         }
 
-        private Component AddComponent(Type type)
+        public Component AddComponent(Type type)
         {
             AssertNull();
+            
+            var component = Activator.CreateInstance(type) as Component;
 
-            if (type.BaseType != typeof(Component))
+            if (component == null)
             {
-                
+                throw new ArgumentException("type needs to be a Component");
             }
 
-            //TODO: instantiate the specified component type
-            throw new NotImplementedException();
+            try
+            {
+                component.DoAwake();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e, this);
+            }
+            return component;
         }
 
         public Component GetComponent<T>()
@@ -55,6 +80,96 @@ namespace UnityEngine
         public Component GetComponent(Type type)
         {
             AssertNull();
+
+            Component pRet = null;
+            while (!pRet)
+            {
+                var ind = _components.FindIndex(c => c.GetType() == type);
+                if (ind == -1)
+                    return null;
+                pRet = _components[ind];
+                
+                //we have a component that should have been destroyed. Remove it.
+                if (!pRet)
+                    _components.RemoveAt(ind);
+                pRet = null;
+            }
+            return pRet;
+        }
+
+        /// <summary>
+        /// remove the exact component
+        /// </summary>
+        /// <param name="component"></param>
+        internal void RemoveComponent(Component component)
+        {
+            _components.Remove(component);
+        }
+
+        public T GetComponentInChildren<T>() where T : Component
+        {
+            return (T)GetComponentInChildren(typeof(T));
+        }
+        public Component GetComponentInChildren(Type type)
+        {
+            AssertNull();
+            //TODO: recursively walk heirarchy
+            throw new NotImplementedException();
+        }
+
+        public T[] GetComponentsInChildren<T>(bool includeInactive = false) where T : Component
+        {
+            return GetComponentsInChildren(typeof(T), includeInactive) as T[];
+        }
+
+        public Component[] GetComponentsInChildren(Type t, bool includeInactive = false)
+        {
+            AssertNull();
+            throw new NotImplementedException();
+        }
+
+        public void SetActive(bool value)
+        {
+            AssertNull();
+            throw new NotImplementedException();
+        }
+
+        public bool CompareTag(string tag)
+        {
+            AssertNull();
+            throw new NotImplementedException();
+        }
+
+        public void SendMessageUpwards(string methodName, object value = null, SendMessageOptions options = SendMessageOptions.RequireReceiver)
+        {
+            AssertNull();
+            //TODO: walk up heiarchy, doing sendmessage on each gameobject
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Run the specified method name on all components on this gameobject
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <param name="value"></param>
+        /// <param name="options">if requirereceiver, and no methods were run, throw an error</param>
+        public void SendMessage(string methodName, object value = null,
+                                SendMessageOptions options = SendMessageOptions.RequireReceiver)
+        {
+            AssertNull();
+            throw new NotImplementedException();
+        }
+
+        public void BroadcastMessage(string methodName, object parameter = null,
+                                     SendMessageOptions options = SendMessageOptions.RequireReceiver)
+        {
+            AssertNull();
+            throw new NotImplementedException();
+        }
+
+        public void SampleAnimation(AnimationClip animation, float time)
+        {
+            AssertNull();
             throw new NotImplementedException();
         }
 
@@ -63,7 +178,10 @@ namespace UnityEngine
         /// </summary>
         internal void RunComponentUpdates()
         {
-            
+            foreach (var component in _components)
+            {
+                component.DoUpdate();
+            }
         }
 
         /// <summary>
@@ -71,7 +189,25 @@ namespace UnityEngine
         /// </summary>
         internal void RunComponentLateUpdates()
         {
-            
+            foreach (var comp in _components)
+            {
+                comp.DoLateUpdate();
+            }
+        }
+
+        public static GameObject FindWithTag(string tag)
+        {
+            return FindGameObjectWithTag(tag);
+        }
+
+        public static GameObject FindGameObjectWithTag(string tag)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static GameObject[] FindGameObjectsWithTag(string tag)
+        {
+            throw new NotImplementedException();
         }
     }
 }

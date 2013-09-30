@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 #if !UNENG
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -14,7 +16,7 @@ namespace UnEngine.InternalEngine
     public sealed class EngineState
     {
         private readonly System.Diagnostics.Stopwatch _watch = new System.Diagnostics.Stopwatch();
-        private readonly Dictionary<int, GameObject> _gameObjects = new Dictionary<int, GameObject>();
+        private readonly IntDictionary<GameObject> _gameObjects = new IntDictionary<GameObject>();
         
         private static EngineState _instance;
         internal static EngineState Instance
@@ -49,25 +51,23 @@ namespace UnEngine.InternalEngine
             
             //TODO: call update on everything
             _keysToRemove.Clear();
-            foreach (var kvp in _gameObjects)
+
+            for (int i = 0; i < _gameObjects.Capacity; i++)
             {
-                if (Object.IsNull(kvp.Value))
+                GameObject gobj;
+                if (_gameObjects.TryGetValue(i, out gobj))
                 {
-                    _keysToRemove.Add(kvp.Key);
-                }
-                else
-                {
-                    try
+                    if (Object.IsNull(gobj))
                     {
-                        kvp.Value.RunComponentUpdates();
+                        _gameObjects.Remove(i);
                     }
-                    catch (Exception e)
+                    else
                     {
-                        Debug.Exception(e);
+                        gobj.RunComponentUpdates();
                     }
                 }
             }
-
+            
             //clear out destroyed objects
             foreach (var key in _keysToRemove)
             {
@@ -76,6 +76,12 @@ namespace UnEngine.InternalEngine
             _keysToRemove.Clear();
 
             //TODO: call lateupdate on everything
+        }
+
+        internal void Add(GameObject gobj)
+        {
+            var id = _gameObjects.Add(gobj);
+            gobj.ReferenceData = new ReferenceData {InstanceID = id};
         }
     }
 }

@@ -56,14 +56,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Camera.cs" />
+    <Compile Include="Data\AnimationClip.cs" />
+    <Compile Include="Components\Animation.cs" />
+    <Compile Include="Components\ConstantForce.cs" />
+    <Compile Include="Components\Light.cs" />
+    <Compile Include="Engine\IntDictionary.cs" />
+    <Compile Include="Structs\Bounds.cs" />
+    <Compile Include="Enums\WrapMode.cs" />
     <Compile Include="Engine\Coroutine.cs" />
     <Compile Include="Components\MonoBehaviour.cs" />
+    <Compile Include="Data\Motion.cs" />
+    <Compile Include="Enums\SendMessageOptions.cs" />
     <Compile Include="Engine\YieldInstruction.cs" />
     <Compile Include="Engine\Component.cs" />
     <Compile Include="Engine\Debug.cs" />
     <Compile Include="InternalEngine\EngineState.cs" />
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="Enums\HideFlags.cs" />
+    <Compile Include="Structs\Ray.cs" />
     <Compile Include="Utils\Application.cs" />
     <Compile Include="Enums\LogType.cs" />
     <Compile Include="Utils\Mathf.cs" />

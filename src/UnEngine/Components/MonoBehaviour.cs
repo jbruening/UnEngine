@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 #if UNENG
@@ -26,6 +27,17 @@ namespace UnityEngine
                 _useGUILayout = value;
             }
         }
+
+        private Action _awake;
+        private Action _start;
+        private Action _update;
+        private Action _lateUpdate;
+        private Action _fixedUpdate;
+        private Action _onDisable;
+        private Action _onDestroy;
+        private Action _onEnable;
+        private Action _onGUI;
+        private Action<int> _onLevelWasLoaded;
 
         public void CancelInvoke(string methodName)
         {
@@ -86,6 +98,78 @@ namespace UnityEngine
         {
             AssertNull();
             throw new NotImplementedException();
+        }
+        
+        protected override void CStart()
+        {
+            if (_start != null)
+                _start();
+        }
+
+        protected override void CUpdate()
+        {
+            if (_update != null)
+                _update();
+        }
+
+        protected override void CLateUpdate()
+        {
+            if (_lateUpdate != null)
+                _lateUpdate();
+        }
+
+        protected override void CAwake()
+        {
+            //Get all the methods that monobehaviour can 'override'
+            var methods = GetMethods(
+                this,
+                new List<string>()
+                    {
+                        "Awake",
+                        "Start", 
+                        "Update",
+                        "LateUpdate",
+                    },
+                new List<Type>()
+                    {
+                        typeof(Action),
+                        typeof(Action),
+                        typeof(Action),
+                        typeof(Action),
+                    });
+
+            _awake = methods[0] as Action;
+            _start = methods[1] as Action;
+            _update = methods[2] as Action;
+            _lateUpdate = methods[3] as Action;
+
+            if (_awake != null)
+                _awake();
+        }
+        
+        private object[] GetMethods(object target, List<string> methodNames, List<Type> methodTypes)
+        {
+            if (methodNames.Count != methodTypes.Count)
+                throw new ArgumentOutOfRangeException("methodTypes", "methodNames and methodTypes must be the same length");
+
+            MethodInfo[] methods = target.GetType().GetMethods(
+                BindingFlags.Public
+                | BindingFlags.NonPublic
+                | BindingFlags.Instance
+                | BindingFlags.FlattenHierarchy);
+
+            object[] retMethods = new object[methodNames.Count];
+
+            foreach (var method in methods)
+            {
+                var ind = methodNames.IndexOf(method.Name);
+                if (ind != -1)
+                {
+                    retMethods[ind] = Delegate.CreateDelegate(methodTypes[ind], target, method, false);
+                }
+            }
+
+            return retMethods;
         }
 
         public static void print(object message)
