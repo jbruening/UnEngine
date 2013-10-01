@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 #if UNENG
 namespace UnEngine
@@ -35,8 +36,18 @@ namespace UnityEngine
             }
         }
 
-        internal static void SetupGameObject(GameObject gobj)
+        internal static void SetupGameObject(GameObject gobj, bool isRuntime = true)
         {
+            if (isRuntime)
+            {
+                gobj.IsPrefab = false;
+                gobj.AddComponent(typeof (Transform));
+            }
+            else
+            {
+                gobj.IsPrefab = true;
+            }
+
             UnEngine.InternalEngine.EngineState.Instance.Add(gobj);
         }
 
@@ -50,12 +61,15 @@ namespace UnityEngine
         {
             AssertNull();
             
-            var component = Activator.CreateInstance(type) as Component;
+            var component = Activator.CreateInstance(type, true) as Component;
 
             if (component == null)
             {
                 throw new ArgumentException("type needs to be a Component");
             }
+
+            component.IsPrefab = false;
+            _components.Add(component);
 
             try
             {
@@ -68,7 +82,7 @@ namespace UnityEngine
             return component;
         }
 
-        public Component GetComponent<T>()
+        public T GetComponent<T>()
             where T : Component
         {
             return GetComponent(typeof (T)) as T;
@@ -89,9 +103,14 @@ namespace UnityEngine
                     return null;
                 pRet = _components[ind];
                 
-                //we have a component that should have been destroyed. Remove it.
-                if (!pRet)
-                    _components.RemoveAt(ind);
+                //got our component
+                if (pRet)
+                {
+                    return pRet;
+                }
+                
+                //the component is supposed to be destroyed in some capacity. remove it.
+                _components.RemoveAt(ind);
                 pRet = null;
             }
             return pRet;
@@ -209,5 +228,9 @@ namespace UnityEngine
         {
             throw new NotImplementedException();
         }
+
+        public Transform transform { get { return GetComponent<Transform>(); } }
+        public Rigidbody rigidbody { get { return GetComponent<Rigidbody>(); } }
+        public Light light { get { return GetComponent<Light>(); } }
     }
 }

@@ -13,6 +13,11 @@ namespace UnityEngine
     {
         public GameObject gameObject { get; internal set; }
 
+        internal Component()
+        {
+            
+        }
+
         public Transform transform
         {
             get { return GetComponent<Transform>(); }

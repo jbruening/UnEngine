@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using UnEngine;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using UnEngine;
 using UnityEngine;
 
 namespace UnEngineUnitTests
@@ -8,11 +8,11 @@ namespace UnEngineUnitTests
     
     
     /// <summary>
-    ///This is a test class for Vector3Test and is intended
-    ///to contain all Vector3Test Unit Tests
+    ///This is a test class for GameObjectTest and is intended
+    ///to contain all GameObjectTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class Vector3Test
+    public class GameObjectTest
     {
 
 
@@ -64,43 +64,17 @@ namespace UnEngineUnitTests
         //
         #endregion
 
-        [TestMethod()]
-        public void oneTest()
-        {
-            Vector3 actual = Vector3.one;
-
-            actual *= 3f;
-
-            Vector3 expected = new Vector3(3f, 3f, 3f);
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void oneDoesntChangeTest()
-        {
-            Vector3 throwAway = Vector3.one;
-            throwAway *= 3f;
-
-            Vector3 expected = new Vector3(1f, 1f, 1f);
-            Assert.AreEqual(expected, Vector3.one);
-            Assert.AreNotEqual(expected, throwAway);
-        }
 
         /// <summary>
-        ///A test for Set
+        ///A test for GameObject Constructor
         ///</summary>
         [TestMethod()]
-        public void SetTest()
+        public void GameObjectConstructorTest()
         {
-            Vector3 target = new Vector3(3f, 1f, 28.2f);
-            float newX = 50f;
-            float newY = 20f;
-            float newZ = 49.553f;
-            target.Set(newX, newY, newZ);
+            GameObject target = new GameObject();
 
-            var expect = new Vector3(newX, newY, newZ);
-            Assert.AreEqual(expect, target);
+            var actual = target.transform;
+            Assert.IsNotNull(actual);
         }
     }
 }

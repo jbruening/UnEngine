@@ -19,7 +19,7 @@ namespace UnEngine.InternalEngine
         private readonly IntDictionary<GameObject> _gameObjects = new IntDictionary<GameObject>();
         
         private static EngineState _instance;
-        internal static EngineState Instance
+        public static EngineState Instance
         {
             get
             {
@@ -44,9 +44,12 @@ namespace UnEngine.InternalEngine
         /// <summary>
         /// run a single step
         /// </summary>
-        public void Update()
+        public void Update(float? newTime = null)
         {
-            Time.Update((float) _watch.Elapsed.TotalSeconds);
+            if (newTime == null)
+                Time.Update((float) _watch.Elapsed.TotalSeconds);
+            else
+                Time.Update(newTime.Value);
             
             
             //TODO: call update on everything

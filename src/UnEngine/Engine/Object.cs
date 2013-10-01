@@ -11,8 +11,8 @@ namespace UnityEngine
     /// </summary>
     public class Object
     {
-        private bool _isNull = true;
-        internal bool IsPrefab = false;
+        private bool _isNull = false;
+        internal bool IsPrefab = true;
 
         internal ReferenceData ReferenceData;
         private string _name;
@@ -59,7 +59,7 @@ namespace UnityEngine
         /// <returns></returns>
         internal static bool IsNull(Object obj)
         {
-            return obj == null || obj._isNull;
+            return ReferenceEquals(obj, null) || obj._isNull;
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace UnityEngine
         /// <returns>true, if the object was made null/already was null</returns>
         internal bool AssertReference<T>(ref T obj) where T : Object
         {
-            if (obj == null) return true;
+            if (ReferenceEquals(obj, null)) return true;
             if (obj._isNull)
             {
                 obj = null;
