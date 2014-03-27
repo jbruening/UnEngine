@@ -84,6 +84,7 @@
     <Compile Include="Structs\ReferenceData.cs" />
     <Compile Include="Components\Rigidbody.cs" />
     <Compile Include="Enums\Space.cs" />
+    <Compile Include="Utils\Random.cs" />
     <Compile Include="Utils\Time.cs" />
     <Compile Include="Components\Transform.cs" />
     <Compile Include="Structs\Vector2.cs" />
@@ -92,6 +93,10 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\..\..\..\PhotonServer\deploy\PhotonPrototypeServer\bin\
+copy $(TargetPath) $(SolutionDir)\..\..\..\PhotonServer\lib\</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
