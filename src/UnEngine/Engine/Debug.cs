@@ -45,5 +45,13 @@ namespace UnityEngine
         public static void LogException(Exception exception, Object context)
         {
         }
+
+		public static void LogWarning(object message)
+		{
+		}
+
+		public static void LogWarning(object message, Object context)
+		{
+		}
     }
 }

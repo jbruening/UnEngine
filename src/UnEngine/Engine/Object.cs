@@ -204,10 +204,26 @@ namespace UnityEngine
             throw new NotImplementedException();
         }
 
+		public static void Destroy(Object obj)
+		{
+			DestroyObject(obj);
+		}
+
+		public static void Destroy(Object obj, float t)
+		{
+			DestroyObject(obj, t);
+		}
+
         public static void DontDestroyOnLoad (Object target)
         {
             // ignored because this is not really unity...
         }
+
+		// Not implemented
+		public static Object[] FindObjectsOfType(Type type)
+		{
+			return null;
+		}
 
         public override string ToString()
         {

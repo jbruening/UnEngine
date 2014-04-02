@@ -115,6 +115,22 @@ namespace UnityEngine
             return gameObject.GetComponent(type);
         }
 
+		public T[] GetComponents<T>()
+			where T : Component
+		{
+			return GetComponents(typeof(T)) as T[];
+		}
+		public Component[] GetComponents(Type type)
+		{
+			AssertNull();
+			return gameObject.GetComponents(type);
+		}
+		public Component[] GetComponents(string type)
+		{
+			AssertNull();
+			return gameObject.GetComponents(type);
+		}
+
         public T GetComponentInChildren<T>() where T : Component
         {
             return GetComponentInChildren(typeof (T)) as T;

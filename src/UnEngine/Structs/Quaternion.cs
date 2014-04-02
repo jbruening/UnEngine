@@ -11,6 +11,8 @@ namespace UnityEngine
     /// </summary>
     public struct Quaternion
     {
+		public static Quaternion identity { get { return new Quaternion(0,0,0,1); } }
+
         /// <summary>
         /// 
         /// </summary>

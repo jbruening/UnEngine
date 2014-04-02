@@ -9,6 +9,12 @@ namespace UnityEngine
     {
         public delegate void WindowFunction (int id);
 
+		public static void BeginHorizontal() { }
+
+		public static void EndHorizontal() { }
+
+		public static bool Button(string text) { return false; }
+
         public static float HorizontalSlider (float value, float leftValue, float rightValue, params GUILayoutOption[] options) { return 0; }
         public static float HorizontalSlider (float value, float leftValue, float rightValue, GUIStyle slider, GUIStyle thumb, params GUILayoutOption[] options) { return 0; }
 

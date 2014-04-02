@@ -10,5 +10,7 @@ namespace UnityEngine
         public static bool changed { get { return false; } }
 
         public static void DragWindow (Rect position) { }
+
+		public static void DragWindow() { }
     }
 }

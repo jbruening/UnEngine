@@ -6,5 +6,7 @@ namespace UnityEngine
 {
     public class Rigidbody : Component
     {
+		public Vector3 velocity { get; set; }
+		public Vector3 angularVelocity { get; set; }
     }
 }

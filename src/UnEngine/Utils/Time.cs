@@ -9,6 +9,8 @@ namespace UnityEngine
     /// </summary>
     public sealed class Time
     {
+		public static float realtimeSinceStartup { get { return time; } }
+
         /// <summary>
         /// 
         /// </summary>

@@ -13,6 +13,7 @@ namespace UnityEngine
     /// </summary>
     public class GameObject : Object
     {
+		public bool activeInHierarchy { get; set; }
 
         private readonly List<Component> _components = new List<Component>();
 
@@ -115,6 +116,24 @@ namespace UnityEngine
             }
             return pRet;
         }
+
+		public T[] GetComponents<T>()
+			where T : Component
+		{
+			return GetComponents(typeof(T)) as T[];
+		}
+		public Component[] GetComponents(string type)
+		{
+			return GetComponents(Type.GetType(type));
+		}
+		public Component[] GetComponents(Type type)
+		{
+			AssertNull();
+			
+			var pRet = _components.FindAll(c => c.GetType() == type);
+
+			return pRet.ToArray();
+		}
 
         /// <summary>
         /// remove the exact component

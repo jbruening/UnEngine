@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Attributes\AddComponentMenuAttribute.cs" />
     <Compile Include="Attributes\HideInInspectorAttribute.cs" />
+    <Compile Include="Attributes\RPC.cs" />
     <Compile Include="Components\Camera.cs" />
     <Compile Include="Data\AnimationClip.cs" />
     <Compile Include="Components\Animation.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Data\Texture.cs" />
     <Compile Include="Engine\IntDictionary.cs" />
     <Compile Include="Engine\ScriptableObject.cs" />
+    <Compile Include="Enums\KeyCode.cs" />
     <Compile Include="GUI\GUI.cs" />
     <Compile Include="GUI\GUIContent.cs" />
     <Compile Include="GUI\GUILayout.cs" />
@@ -95,7 +97,11 @@
     <Compile Include="Structs\ReferenceData.cs" />
     <Compile Include="Components\Rigidbody.cs" />
     <Compile Include="Enums\Space.cs" />
+    <Compile Include="Utils\Ping.cs" />
+    <Compile Include="Utils\PlayerPrefs.cs" />
+    <Compile Include="Utils\Profiler.cs" />
     <Compile Include="Utils\Random.cs" />
+    <Compile Include="Utils\Resources.cs" />
     <Compile Include="Utils\Screen.cs" />
     <Compile Include="Utils\Time.cs" />
     <Compile Include="Components\Transform.cs" />
