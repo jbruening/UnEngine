@@ -16,6 +16,13 @@ namespace UnityEngine
         public static void Label (string text, GUIStyle style, params GUILayoutOption[] options) { }
         public static void Label (GUIContent content, GUIStyle style, params GUILayoutOption[] options) { }
 
+        public static bool Toggle (bool value, Texture image, params GUILayoutOption[] options) { return true; }
+        public static bool Toggle (bool value, string text, params GUILayoutOption[] options) { return true; }
+        public static bool Toggle (bool value, GUIContent content, params GUILayoutOption[] options) { return true; }
+        public static bool Toggle (bool value, Texture image, GUIStyle style, params GUILayoutOption[] options) { return true; }
+        public static bool Toggle (bool value, string text, GUIStyle style, params GUILayoutOption[] options) { return true; }
+        public static bool Toggle (bool value, GUIContent content, GUIStyle style, params GUILayoutOption[] options) { return true; }
+
         public static Rect Window (int id, Rect screenRect, WindowFunction func, string text, params GUILayoutOption[] options) { return new Rect (); }
         public static Rect Window (int id, Rect screenRect, WindowFunction func, Texture image, params GUILayoutOption[] options) { return new Rect (); }
         public static Rect Window (int id, Rect screenRect, WindowFunction func, GUIContent content, params GUILayoutOption[] options) { return new Rect (); }
