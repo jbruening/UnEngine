@@ -64,6 +64,14 @@ namespace UnityEngine
 			}
 		}
 
+		public float sqrMagnitude
+		{
+			get
+			{
+				return (float)(x * (double)x + y * (double)y);
+			}
+		}
+
 		public static Vector2 MoveTowards(Vector2 current, Vector2 target, float maxDistanceDelta)
 		{
 			var vector2 = target - current;
