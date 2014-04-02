@@ -8,8 +8,8 @@
     <ProjectGuid>{5EA17321-5D9F-45AF-851A-033B959B4024}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnEngine</RootNamespace>
-    <AssemblyName>UnEngine</AssemblyName>
+    <RootNamespace>UnityEngine</RootNamespace>
+    <AssemblyName>UnityEngine</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -21,8 +21,8 @@
     <OutputPath>..\..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\Debug\UnEngine.XML</DocumentationFile>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>..\..\bin\Debug\UnityEngine.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,13 +32,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\Release\UnEngine.XML</DocumentationFile>
+    <DocumentationFile>..\..\bin\Release\UnityEngine.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UnityTest|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\UnEngineComparisonTests\Assets\Plugins\</OutputPath>
     <DefineConstants>TRACE;DEBUG;UNENG</DefineConstants>
-    <DocumentationFile>..\UnEngineComparisonTests\Assets\Plugins\UnEngine.XML</DocumentationFile>
+    <DocumentationFile>..\UnEngineComparisonTests\Assets\Plugins\UnityEngine.xml</DocumentationFile>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisLogFile>bin\Debug\UnEngine.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
@@ -55,12 +55,16 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\AddComponentMenuAttribute.cs" />
+    <Compile Include="Attributes\HideInInspectorAttribute.cs" />
     <Compile Include="Components\Camera.cs" />
     <Compile Include="Data\AnimationClip.cs" />
     <Compile Include="Components\Animation.cs" />
     <Compile Include="Components\ConstantForce.cs" />
     <Compile Include="Components\Light.cs" />
     <Compile Include="Engine\IntDictionary.cs" />
+    <Compile Include="Engine\ScriptableObject.cs" />
+    <Compile Include="GUI\GUILayout.cs" />
     <Compile Include="Structs\Bounds.cs" />
     <Compile Include="Enums\WrapMode.cs" />
     <Compile Include="Engine\Coroutine.cs" />
@@ -74,6 +78,7 @@
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="Enums\HideFlags.cs" />
     <Compile Include="Structs\Ray.cs" />
+    <Compile Include="Structs\Rect.cs" />
     <Compile Include="Utils\Application.cs" />
     <Compile Include="Enums\LogType.cs" />
     <Compile Include="Utils\Mathf.cs" />
@@ -94,8 +99,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\..\..\..\PhotonServer\deploy\PhotonPrototypeServer\bin\
-copy $(TargetPath) $(SolutionDir)\..\..\..\PhotonServer\lib\</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

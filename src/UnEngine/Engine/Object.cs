@@ -204,6 +204,11 @@ namespace UnityEngine
             throw new NotImplementedException();
         }
 
+        public static void DontDestroyOnLoad (Object target)
+        {
+            // ignored because this is not really unity...
+        }
+
         public override string ToString()
         {
             AssertNull();
