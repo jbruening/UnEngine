@@ -7,7 +7,7 @@ namespace UnityEngine
 {
 	public static class Screen
 	{
-		public static int width { get; }
-		public static int height { get; }
+		public static int width { get; set; }
+		public static int height { get; set; }
 	}
 }

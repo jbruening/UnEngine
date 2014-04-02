@@ -86,6 +86,7 @@
     <Compile Include="Structs\Rect.cs" />
     <Compile Include="Utils\Application.cs" />
     <Compile Include="Enums\LogType.cs" />
+    <Compile Include="Utils\Input.cs" />
     <Compile Include="Utils\Mathf.cs" />
     <Compile Include="Structs\Matrix4x4.cs" />
     <Compile Include="Engine\Object.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Components\Rigidbody.cs" />
     <Compile Include="Enums\Space.cs" />
     <Compile Include="Utils\Random.cs" />
+    <Compile Include="Utils\Screen.cs" />
     <Compile Include="Utils\Time.cs" />
     <Compile Include="Components\Transform.cs" />
     <Compile Include="Structs\Vector2.cs" />
