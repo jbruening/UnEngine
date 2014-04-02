@@ -62,9 +62,13 @@
     <Compile Include="Components\Animation.cs" />
     <Compile Include="Components\ConstantForce.cs" />
     <Compile Include="Components\Light.cs" />
+    <Compile Include="Data\Texture.cs" />
     <Compile Include="Engine\IntDictionary.cs" />
     <Compile Include="Engine\ScriptableObject.cs" />
+    <Compile Include="GUI\GUIContent.cs" />
     <Compile Include="GUI\GUILayout.cs" />
+    <Compile Include="GUI\GUILayoutOptions.cs" />
+    <Compile Include="GUI\GUIStyle.cs" />
     <Compile Include="Structs\Bounds.cs" />
     <Compile Include="Enums\WrapMode.cs" />
     <Compile Include="Engine\Coroutine.cs" />
