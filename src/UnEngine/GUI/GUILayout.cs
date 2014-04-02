@@ -9,6 +9,9 @@ namespace UnityEngine
     {
         public delegate void WindowFunction (int id);
 
+        public static float HorizontalSlider (float value, float leftValue, float rightValue, params GUILayoutOption[] options) { return 0; }
+        public static float HorizontalSlider (float value, float leftValue, float rightValue, GUIStyle slider, GUIStyle thumb, params GUILayoutOption[] options) { return 0; }
+
         public static void Label (Texture image, params GUILayoutOption[] options) { }
         public static void Label (string text, params GUILayoutOption[] options) { }
         public static void Label (GUIContent content, params GUILayoutOption[] options) { }
