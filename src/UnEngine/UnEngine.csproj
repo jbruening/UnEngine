@@ -65,6 +65,7 @@
     <Compile Include="Data\Texture.cs" />
     <Compile Include="Engine\IntDictionary.cs" />
     <Compile Include="Engine\ScriptableObject.cs" />
+    <Compile Include="GUI\GUI.cs" />
     <Compile Include="GUI\GUIContent.cs" />
     <Compile Include="GUI\GUILayout.cs" />
     <Compile Include="GUI\GUILayoutOptions.cs" />
