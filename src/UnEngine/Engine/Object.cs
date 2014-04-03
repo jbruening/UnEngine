@@ -222,7 +222,7 @@ namespace UnityEngine
 		// Not implemented
 		public static Object[] FindObjectsOfType(Type type)
 		{
-			return null;
+			return UnEngine.InternalEngine.EngineState.Instance.FindObjectsOfType(type);
 		}
 
         public override string ToString()

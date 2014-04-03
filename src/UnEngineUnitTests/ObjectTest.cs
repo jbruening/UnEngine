@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using UnEngine;
 using UnityEngine;
+using System.Linq;
 
 namespace UnEngineUnitTests
 {
@@ -48,13 +50,14 @@ namespace UnEngineUnitTests
         //public static void MyClassCleanup()
         //{
         //}
-        //
-        //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
+        
+        // Use TestInitialize to run code before running each test
+        [TestInitialize()]
+        public void MyTestInitialize()
+        {
+            UnEngine.InternalEngine.EngineState.Reset ();
+        }
+        
         //Use TestCleanup to run code after each test has run
         //[TestCleanup()]
         //public void MyTestCleanup()
@@ -79,6 +82,35 @@ namespace UnEngineUnitTests
             actual = exists;
 
             Assert.AreEqual(false, actual);
+        }
+
+        [TestMethod ()]
+        public void FindObjectsOfType_GameObjects_Test ()
+        {
+            var obj1 = new GameObject ("alpha");
+            var obj2 = new GameObject ("beta");
+
+            var found = Object.FindObjectsOfType (typeof (GameObject));
+            Assert.AreEqual (2, found.Length);
+            Assert.AreEqual (1, found.Count (x => x.name == "alpha"));
+            Assert.AreEqual (1, found.Count (x => x.name == "beta"));
+        }
+
+        [TestMethod ()]
+        public void FindObjectsOfType_Components_Test ()
+        {
+            var obj1 = new GameObject ();
+            var cam1 = obj1.AddComponent<Camera>();
+            cam1.name = "alpha";
+
+            var obj2 = new GameObject ();
+            var cam2 = obj1.AddComponent<Camera> ();
+            cam2.name = "beta";
+
+            var found = Object.FindObjectsOfType (typeof (Camera));
+            Assert.AreEqual (2, found.Length);
+            Assert.AreEqual (1, found.Count (x => x.name == "alpha"));
+            Assert.AreEqual (1, found.Count (x => x.name == "beta"));
         }
     }
 }

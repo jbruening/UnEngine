@@ -32,6 +32,15 @@ namespace UnEngine.InternalEngine
                 return _instance;
             }
         }
+
+        /// <summary>
+        /// Resets the engine state. This is useful for unit tests to create a clean slate.
+        /// </summary>
+        public static void Reset ()
+        {
+            _instance = null;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -85,6 +94,20 @@ namespace UnEngine.InternalEngine
         {
             var id = _gameObjects.Add(gobj);
             gobj.ReferenceData = new ReferenceData {InstanceID = id};
+        }
+
+        public Object[] FindObjectsOfType (Type type) 
+        {
+            if (type == typeof (GameObject)) {
+                return _gameObjects.Values.ToArray();
+            }
+
+            List<Object> result = new List<Object> ();
+            foreach (var go in _gameObjects)
+            {
+                result.AddRange (go.GetComponents (type));
+            }
+            return result.ToArray ();
         }
     }
 }
