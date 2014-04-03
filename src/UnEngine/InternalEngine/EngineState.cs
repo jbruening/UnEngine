@@ -79,15 +79,35 @@ namespace UnEngine.InternalEngine
                     }
                 }
             }
-            
-            //clear out destroyed objects
-            foreach (var key in _keysToRemove)
-            {
-                _gameObjects.Remove(key);
-            }
-            _keysToRemove.Clear();
 
-            //TODO: call lateupdate on everything
+			foreach (var go in _gameObjects)
+			{
+				if(go)
+				{
+					go.RunCoroutines();
+				}
+			}
+			foreach (var go in _gameObjects)
+			{
+				if(go)
+				{
+					go.RunComponentLateUpdates();
+				}
+			}
+			foreach (var go in _gameObjects)
+			{
+				if(go)
+				{
+					go.RunEndOfFrameCoroutines();
+				}
+			}
+
+			//clear out destroyed objects
+			foreach (var key in _keysToRemove)
+			{
+				_gameObjects.Remove(key);
+			}
+			_keysToRemove.Clear();
         }
 
         internal void Add(GameObject gobj)

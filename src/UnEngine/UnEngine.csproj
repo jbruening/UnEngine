@@ -71,6 +71,8 @@
     <Compile Include="Data\Texture.cs" />
     <Compile Include="Engine\IntDictionary.cs" />
     <Compile Include="Engine\ScriptableObject.cs" />
+    <Compile Include="Engine\WaitForEndOfFrame.cs" />
+    <Compile Include="Engine\WaitForSeconds.cs" />
     <Compile Include="Enums\KeyCode.cs" />
     <Compile Include="GUI\GUI.cs" />
     <Compile Include="GUI\GUIContent.cs" />

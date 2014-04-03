@@ -222,6 +222,18 @@ namespace UnityEngine
             }
         }
 
+		internal void RunCoroutines()
+		{
+			foreach (var component in _components)
+			{
+				MonoBehaviour monoBehaviour = component as MonoBehaviour;
+				if (monoBehaviour)
+				{
+					monoBehaviour.UpdateCoroutines();
+				}
+			}
+		}
+
         /// <summary>
         /// run LateUpdate on all components
         /// </summary>
@@ -232,6 +244,18 @@ namespace UnityEngine
                 comp.DoLateUpdate();
             }
         }
+
+		internal void RunEndOfFrameCoroutines()
+		{
+			foreach (var component in _components)
+			{
+				MonoBehaviour monoBehaviour = component as MonoBehaviour;
+				if(monoBehaviour)
+				{
+					monoBehaviour.UpdateEndOfFrameCoroutines();
+				}
+			}
+		}
 
         public static GameObject FindWithTag(string tag)
         {

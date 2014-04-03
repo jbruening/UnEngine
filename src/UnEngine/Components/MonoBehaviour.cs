@@ -28,6 +28,9 @@ namespace UnityEngine
             }
         }
 
+		private List<Coroutine> _coroutines = new List<Coroutine>();
+		private List<Coroutine> _endOfFrameCoroutines = new List<Coroutine>();
+
         private Action _awake;
         private Action _start;
         private Action _update;
@@ -82,8 +85,31 @@ namespace UnityEngine
         public Coroutine StartCoroutine(IEnumerator routine)
         {
             AssertNull();
-            throw new NotImplementedException();
+
+			try
+			{
+				var coroutine = new Coroutine(routine);
+				ScheduleCoroutine(coroutine);
+				return coroutine;
+			}
+			catch (InvalidOperationException)
+			{
+				return null;
+			}
         }
+
+		internal void ScheduleCoroutine(Coroutine coroutine)
+		{
+			if (coroutine.Enumerator.Current is WaitForEndOfFrame)
+			{
+				_endOfFrameCoroutines.Add(coroutine);
+			}
+			else
+			{
+				_coroutines.Add(coroutine);
+			}
+		}
+
         public Coroutine StartCoroutine_Auto(IEnumerator routine)
         {
             AssertNull();
@@ -105,6 +131,34 @@ namespace UnityEngine
             if (_start != null)
                 _start();
         }
+
+		internal void UpdateCoroutines()
+		{
+			var tempList = new List<Coroutine>(_coroutines);
+			_coroutines.Clear();
+			foreach (var coroutine in tempList)
+			{
+				coroutine.Run();
+				if(coroutine.isDone)
+				{
+					ScheduleCoroutine(coroutine);
+				}
+			}
+		}
+
+		internal void UpdateEndOfFrameCoroutines()
+		{
+			var tempList = new List<Coroutine>(_endOfFrameCoroutines);
+			_endOfFrameCoroutines.Clear();
+			foreach (var coroutine in tempList)
+			{
+				coroutine.Run();
+				if (coroutine.isDone)
+				{
+					ScheduleCoroutine(coroutine);
+				}
+			}
+		}
 
         protected override void CUpdate()
         {
