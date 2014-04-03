@@ -17,7 +17,9 @@ namespace UnEngine.InternalEngine
     {
         private readonly System.Diagnostics.Stopwatch _watch = new System.Diagnostics.Stopwatch();
         private readonly IntDictionary<GameObject> _gameObjects = new IntDictionary<GameObject>();
-        
+
+		public bool isRunning { get; private set; }
+
         private static EngineState _instance;
         public static EngineState Instance
         {
@@ -47,6 +49,7 @@ namespace UnEngine.InternalEngine
         public void Setup()
         {
             Time.Update(0);
+			isRunning = true;
         }
 
         readonly List<int> _keysToRemove = new List<int>();
@@ -129,5 +132,10 @@ namespace UnEngine.InternalEngine
             }
             return result.ToArray ();
         }
+
+		public void Quit()
+		{
+			isRunning = false;
+		}
     }
 }

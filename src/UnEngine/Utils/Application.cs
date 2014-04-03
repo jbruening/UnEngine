@@ -24,5 +24,10 @@ namespace UnityEngine
 
 		public static void LoadLevel(int levelNumber) { }
 		public static void LoadLevel(string levelName) { }
+
+		public static void Quit()
+		{
+			UnEngine.InternalEngine.EngineState.Instance.Quit();
+		}
     }
 }
