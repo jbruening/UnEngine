@@ -65,6 +65,7 @@
     <Compile Include="IntDictionaryTest.cs" />
     <Compile Include="ObjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcesTest.cs" />
     <Compile Include="Vector3Test.cs" />
   </ItemGroup>
   <ItemGroup>
