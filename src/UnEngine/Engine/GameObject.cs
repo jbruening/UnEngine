@@ -281,6 +281,7 @@ namespace UnityEngine
         /// </summary>
         public void _AddComponentInstance (Component component)
         {
+            component.gameObject = this;
             _components.Add (component);
 
             try

@@ -99,18 +99,19 @@ namespace UnEngineUnitTests
         [TestMethod ()]
         public void FindObjectsOfType_Components_Test ()
         {
-            var obj1 = new GameObject ();
+            var obj1 = new GameObject ("alpha");
             var cam1 = obj1.AddComponent<Camera>();
-            cam1.name = "alpha";
 
-            var obj2 = new GameObject ();
-            var cam2 = obj1.AddComponent<Camera> ();
-            cam2.name = "beta";
+            var obj2 = new GameObject ("beta");
+            var cam2 = obj2.AddComponent<Camera> ();
+
+            var obj3 = new GameObject ("gamma");
 
             var found = Object.FindObjectsOfType (typeof (Camera));
             Assert.AreEqual (2, found.Length);
             Assert.AreEqual (1, found.Count (x => x.name == "alpha"));
             Assert.AreEqual (1, found.Count (x => x.name == "beta"));
+            Assert.AreEqual (0, found.Count (x => x.name == "gamma"));
             var array = (Camera[])found;
             Assert.AreEqual (2, array.Length);
         }
@@ -145,6 +146,26 @@ namespace UnEngineUnitTests
             Assert.AreEqual (10, mb.alpha);
         }
 
+        [TestMethod ()]
+        public void InstantiateHierarchyTest ()
+        {
+            var go = new GameObject ("alpha");
+            var mb = (TestMonoBehaviour)go.AddComponent<TestMonoBehaviour> ();
+            mb.alpha = 1;
+
+            var go2 = new GameObject ("beta");
+            var mb2 = (TestMonoBehaviour)go2.AddComponent<TestMonoBehaviour> ();
+            mb2.alpha = 1;
+
+            go2.transform.parent = go.transform.parent;
+
+            var instance = (GameObject) Object.Instantiate (go);
+
+            Assert.IsNotNull (instance);
+            Assert.AreEqual (1, instance.transform.childCount);
+
+
+        }
     }
 
 }

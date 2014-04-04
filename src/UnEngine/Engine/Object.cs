@@ -18,7 +18,7 @@ namespace UnityEngine
         private string _name;
         private HideFlags _hideFlags;
 
-        public string name
+        public virtual string name
         {
             get { AssertNull(); return _name; }
             set { AssertNull(); _name = value; }

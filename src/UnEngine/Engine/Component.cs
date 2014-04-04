@@ -18,6 +18,11 @@ namespace UnityEngine
             
         }
 
+        public override string name
+        {
+            get { return gameObject.name; }
+        }
+
         public Transform transform
         {
             get { return GetComponent<Transform>(); }

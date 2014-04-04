@@ -14,7 +14,7 @@ namespace UnityEngine
         private Quaternion _rotation;
         private Transform _parent;
 
-        private List<Transform> _children;
+        private List<Transform> _children = new List<Transform>();
 
         private Vector3 _localScale;
         private Vector3 _localPosition;
@@ -98,8 +98,24 @@ namespace UnityEngine
             set
             {
                 AssertNull();
+
+                if (_parent != null) {
+                    _parent._children.Remove (this);
+                }
+
                 _parent = value;
+                _parent._children.Add (this);
             }
+        }
+
+        public int childCount
+        {
+            get { return _children.Count; }
+        }
+
+        public Transform GetChild (int Index)
+        {
+            return _children[Index];
         }
 
         public Transform root
