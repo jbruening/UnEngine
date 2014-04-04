@@ -111,6 +111,40 @@ namespace UnEngineUnitTests
             Assert.AreEqual (2, found.Length);
             Assert.AreEqual (1, found.Count (x => x.name == "alpha"));
             Assert.AreEqual (1, found.Count (x => x.name == "beta"));
+            var array = (Camera[])found;
+            Assert.AreEqual (2, array.Length);
+        }
+
+
+        class TestMonoBehaviour : MonoBehaviour
+        {
+            public int alpha = 4;
+
+            public void Update ()
+            {
+                alpha += 1;
+            }
+        }
+
+        [TestMethod ()]
+        public void InstantiateTest ()
+        {
+            var go = new GameObject ();
+            go.name = "some test name";
+            var mb = (TestMonoBehaviour) go.AddComponent<TestMonoBehaviour> ();
+            mb.alpha = 1;
+
+            var instance = (GameObject) Object.Instantiate (go);
+            mb.alpha = 9;
+
+            Assert.AreEqual ("some test name", instance.name);
+            Assert.IsNotNull (instance.GetComponent<TestMonoBehaviour> ());
+            Assert.AreEqual (1, instance.GetComponent<TestMonoBehaviour> ().alpha);
+
+            UnEngine.InternalEngine.EngineState.Instance.Update (0);
+            Assert.AreEqual (2, instance.GetComponent<TestMonoBehaviour> ().alpha);
+            Assert.AreEqual (10, mb.alpha);
         }
     }
+
 }
