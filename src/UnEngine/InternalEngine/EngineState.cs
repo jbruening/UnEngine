@@ -5,6 +5,7 @@ using System.Linq;
 #if !UNENG
 using UnityEngine;
 using Object = UnityEngine.Object;
+using System.Collections;
 
 #endif
 
@@ -125,12 +126,22 @@ namespace UnEngine.InternalEngine
                 return _gameObjects.Values.ToArray();
             }
 
-            List<Object> result = new List<Object> ();
+            var listType = typeof (List<>);
+            var constructedListType = listType.MakeGenericType (type);
+            var result = (IList) Activator.CreateInstance (constructedListType);            
+            
             foreach (var go in _gameObjects)
             {
-                result.AddRange (go.GetComponents (type));
+                foreach (var obj in go.GetComponents (type))
+                {
+                    result.Add (obj);
+                }
             }
-            return result.ToArray ();
+
+            var array = Array.CreateInstance (type, result.Count);
+            result.CopyTo (array, 0);
+
+            return (Object[]) array;
         }
 
 		public void Quit()
