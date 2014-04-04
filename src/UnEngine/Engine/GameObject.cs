@@ -70,16 +70,8 @@ namespace UnityEngine
             }
 
             component.IsPrefab = false;
-            _components.Add(component);
+            _AddComponentInstance (component);
 
-            try
-            {
-                component.DoAwake();
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e, this);
-            }
             return component;
         }
 
@@ -275,5 +267,30 @@ namespace UnityEngine
         public Transform transform { get { return GetComponent<Transform>(); } }
         public Rigidbody rigidbody { get { return GetComponent<Rigidbody>(); } }
         public Light light { get { return GetComponent<Light>(); } }
+
+        /// <summary>
+        /// For internal use only.
+        /// </summary>
+        public List<Component> _GetAllComponents ()
+        {
+            return _components;
+        }
+
+        /// <summary>
+        /// For internal use only.
+        /// </summary>
+        public void _AddComponentInstance (Component component)
+        {
+            _components.Add (component);
+
+            try
+            {
+                component.DoAwake ();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException (e, this);
+            }
+        }
     }
 }

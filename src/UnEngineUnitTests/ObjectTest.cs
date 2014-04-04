@@ -129,8 +129,7 @@ namespace UnEngineUnitTests
         [TestMethod ()]
         public void InstantiateTest ()
         {
-            var go = new GameObject ();
-            go.name = "some test name";
+            var go = new GameObject ("some test name");
             var mb = (TestMonoBehaviour) go.AddComponent<TestMonoBehaviour> ();
             mb.alpha = 1;
 
@@ -145,6 +144,7 @@ namespace UnEngineUnitTests
             Assert.AreEqual (2, instance.GetComponent<TestMonoBehaviour> ().alpha);
             Assert.AreEqual (10, mb.alpha);
         }
+
     }
 
 }

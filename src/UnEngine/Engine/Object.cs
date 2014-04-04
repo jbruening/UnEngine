@@ -154,7 +154,25 @@ namespace UnityEngine
         {
             CheckNullArgument(original, "The thing you want to instantiate is null.");
             //todo: can the object be instantiated in space?
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+
+            var instance = (Object) Activator.CreateInstance (original.GetType ());
+
+            var originalGO = (GameObject)original;
+            if (originalGO != null)
+            {
+                var instanceGO = (GameObject)instance;
+                instanceGO.name = originalGO.name;
+
+                foreach (var component in originalGO._GetAllComponents ())
+                {
+                    var clone = (Component) component.MemberwiseClone ();
+                    clone.IsPrefab = false;
+                    instanceGO._AddComponentInstance (clone);
+                }
+            }
+
+            return instance;
         }
 
         /// <summary>
