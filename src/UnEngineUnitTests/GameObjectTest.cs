@@ -77,33 +77,5 @@ namespace UnEngineUnitTests
             Assert.IsNotNull(actual);
         }
 
-        [TestMethod ()]
-        public void ChildCountTest ()
-        {
-            var parent = new GameObject ("parent");
-            var child = new GameObject ("child");
-            var child2 = new GameObject ("child2");
-
-            Assert.AreEqual (0, parent.transform.childCount);
-
-            child.transform.parent = parent.transform;
-            child2.transform.parent = parent.transform;
-
-            Assert.AreEqual (2, parent.transform.childCount);
-        }
-
-        [TestMethod ()]
-        public void GetChildTest ()
-        {
-            var parent = new GameObject ("parent");
-            var child = new GameObject ("child");
-            var child2 = new GameObject ("child2");
-
-            child.transform.parent = parent.transform;
-            child2.transform.parent = parent.transform;
-
-            Assert.AreEqual ("child", parent.transform.GetChild (0).name);
-            Assert.AreEqual ("child2", parent.transform.GetChild (1).name);
-        }
     }
 }
