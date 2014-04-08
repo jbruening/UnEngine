@@ -14,6 +14,7 @@ namespace UnityEngine
 		public static int loadedLevel { get { return 0; } }
 		public static string loadedLevelName { get { return ""; } }
 		public static bool isLoadingLevel { get { return false; } }
+		public static string persistentDataPath { get { return ""; } }
 
         public delegate void LogCallback(string logString, string stackTrace, LogType type);
 
