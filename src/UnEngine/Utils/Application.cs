@@ -10,6 +10,7 @@ namespace UnityEngine
     public class Application
     {
 		public static bool isPlaying { get { return true; } }
+		public static bool isEditor { get { return false; } }
 		public static bool runInBackground { get; set; }
 		public static int loadedLevel { get { return 0; } }
 		public static string loadedLevelName { get { return ""; } }

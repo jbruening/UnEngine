@@ -59,11 +59,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Material.cs" />
     <Compile Include="Attributes\AddComponentMenuAttribute.cs" />
+    <Compile Include="Attributes\ExecuteInEditModeAttribute.cs" />
     <Compile Include="Attributes\HideInInspectorAttribute.cs" />
     <Compile Include="Attributes\RPC.cs" />
     <Compile Include="Attributes\SerializeFieldAttribute.cs" />
     <Compile Include="Components\Camera.cs" />
+    <Compile Include="Components\Collider.cs" />
     <Compile Include="Data\AnimationClip.cs" />
     <Compile Include="Components\Animation.cs" />
     <Compile Include="Components\ConstantForce.cs" />
@@ -79,6 +82,8 @@
     <Compile Include="GUI\GUILayout.cs" />
     <Compile Include="GUI\GUILayoutOptions.cs" />
     <Compile Include="GUI\GUIStyle.cs" />
+    <Compile Include="Physics\Physics.cs" />
+    <Compile Include="Physics\RaycastHit.cs" />
     <Compile Include="Structs\Bounds.cs" />
     <Compile Include="Enums\WrapMode.cs" />
     <Compile Include="Engine\Coroutine.cs" />
@@ -91,11 +96,14 @@
     <Compile Include="InternalEngine\EngineState.cs" />
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="Enums\HideFlags.cs" />
+    <Compile Include="Structs\Color.cs" />
     <Compile Include="Structs\Ray.cs" />
     <Compile Include="Structs\Rect.cs" />
     <Compile Include="Utils\Application.cs" />
     <Compile Include="Enums\LogType.cs" />
+    <Compile Include="Utils\Gizmos.cs" />
     <Compile Include="Utils\Input.cs" />
+    <Compile Include="Utils\LayerMask.cs" />
     <Compile Include="Utils\Mathf.cs" />
     <Compile Include="Structs\Matrix4x4.cs" />
     <Compile Include="Engine\Object.cs" />
@@ -121,8 +129,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).* $(SolutionDir)\..\..\HauntedIsland\HIUnityProject\HIShared\dependencies\</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

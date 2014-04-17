@@ -147,6 +147,17 @@ namespace UnityEngine
             return gameObject.GetComponentInChildren(type);
         }
 
+		public T[] GetComponentsInChildren<T>() where T : Component
+		{
+			return GetComponentsInChildren(typeof(T)) as T[];
+		}
+
+		private Component[] GetComponentsInChildren(Type type)
+		{
+			AssertNull();
+			return gameObject.GetComponentsInChildren(type);
+		}
+
         public void SendMessageUpwards(string methodName, object value = null,
                                        SendMessageOptions options = SendMessageOptions.RequireReceiver)
         {
