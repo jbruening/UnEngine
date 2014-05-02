@@ -205,7 +205,17 @@ namespace UnityEngine
         /// <returns></returns>
         public static Quaternion AngleAxis(float angle, Vector3 axis)
         {
-            throw new NotImplementedException();
+            var normalized = axis.normalized;
+
+            var half = angle * 0.5f;
+            var sin = (float)Math.Sin(half);
+            var cos = (float)Math.Cos(half);
+
+            return new Quaternion(
+                normalized.x * sin,
+                normalized.y * sin,
+                normalized.z * sin,
+                cos);
         }
 
         /// <summary>
@@ -360,7 +370,17 @@ namespace UnityEngine
 
         private static void UnityStub_ToAxisAngleRad(Quaternion rotation, out Vector3 axis, out float angle)
         {
-            throw new NotImplementedException();
+            var sqrLngth = (rotation.x * rotation.x) + (rotation.y * rotation.y) + (rotation.z * rotation.z);
+            if (sqrLngth < kEpsilon)
+            {
+                axis = Vector3.right;
+            }
+            else
+            {
+                float inv = 1.0f / sqrLngth;
+                axis = new Vector3(rotation.x * inv, rotation.y * inv, rotation.z * inv);
+            }
+            angle = (float) (2.0*Math.Acos(rotation.w));
         }
 
         private static Quaternion UnityStub_FromEulerRad(Vector3 euler)
