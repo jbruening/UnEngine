@@ -26,10 +26,9 @@ namespace UnityEngine
             this.y = y;
         }
 
-		public Vector2(Vector3 v)
+		public static implicit operator Vector2(Vector3 v)
 		{
-			this.x = v.x;
-			this.y = v.y;
+			return new Vector2(v.x, v.y);
 		}
 
 		public static Vector2 operator +(Vector2 a, Vector2 b)
