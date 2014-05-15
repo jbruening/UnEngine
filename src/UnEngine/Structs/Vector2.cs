@@ -56,6 +56,11 @@ namespace UnityEngine
 			return new Vector2(a.x / d, a.y / d);
 		}
 
+		public static float Dot (Vector2 a, Vector2 b)
+		{
+			return a.x * b.x + a.y * b.y;
+		}
+
 		public float magnitude
 		{
 			get
