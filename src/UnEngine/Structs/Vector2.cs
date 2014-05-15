@@ -26,6 +26,12 @@ namespace UnityEngine
             this.y = y;
         }
 
+		public Vector2(Vector3 v)
+		{
+			this.x = v.x;
+			this.y = v.y;
+		}
+
 		public static Vector2 operator +(Vector2 a, Vector2 b)
 		{
 			return new Vector2(a.x + b.x, a.y + b.y);
@@ -66,6 +72,10 @@ namespace UnityEngine
 			get
 			{
 				var length = magnitude;
+
+				if (length < 0.0001f)
+					return Vector2.Zero;
+
 				return new Vector2(x / magnitude, y / magnitude);
 			}
 		}
@@ -102,6 +112,12 @@ namespace UnityEngine
 			if (t > 1f)
 				return to;
 			return (to - from) * t + from;
+		}
+
+		public static Vector2 Zero { get; private set; }
+
+		static Vector2() {
+			Zero = new Vector2(0, 0);
 		}
     }
 }
