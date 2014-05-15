@@ -61,6 +61,15 @@ namespace UnityEngine
 			return a.x * b.x + a.y * b.y;
 		}
 
+		public Vector2 normalized
+		{
+			get
+			{
+				var length = magnitude;
+				return new Vector2(x / magnitude, y / magnitude);
+			}
+		}
+
 		public float magnitude
 		{
 			get
