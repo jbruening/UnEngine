@@ -239,7 +239,11 @@ namespace UnityEngine
 
         public void RotateAround(Vector3 point, Vector3 axis, float angle)
         {
-            throw new NotImplementedException();
+            var rot = Quaternion.AngleAxis(angle, axis);
+            //rotate the vector from point to position, then add it to the point.
+            position = (rot*(position - point)) + point;
+            //and then just rotate.
+            rotation *= rot;
         }
 
         public Vector3 TransformDirection(Vector3 direction)
