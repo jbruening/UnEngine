@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnEngine;
 
 namespace UnEngineUnitTests
 {
@@ -56,8 +56,8 @@ namespace UnEngineUnitTests
         //
         #endregion
 
-        [Serializable]
-        public class TestClass : UnityEngine.Object
+        [System.Serializable]
+        public class TestClass : Object
         {
             public int Alpha;
 
