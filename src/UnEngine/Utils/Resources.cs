@@ -9,6 +9,11 @@ namespace UnityEngine
 {
 	public static class Resources
 	{
+		public static Object Load(string path)
+		{
+			return Load(path, null);
+		}
+
 		public static Object Load(string path, Type systemTypeInstance) 
         {
             Object asset = null;
