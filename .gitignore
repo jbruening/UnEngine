@@ -119,3 +119,6 @@ src/UnEngineComparisonTests/Temp/
 src/UnEngineComparisonTests/UnEngineComparisonTests-csharp.sln
 src/UnEngineComparisonTests/UnEngineComparisonTests.sln
 src/UnEngineComparisonTests/UnEngineComparisonTests.userprefs
+src/UnEngineComparisonTests/Assets/Plugins/UnityEngine.dll
+src/UnEngineComparisonTests/Assets/Plugins/UnityEngine.xml
+src/UnEngineComparisonTests/Assets/Plugins/YamlDotNet.dll
