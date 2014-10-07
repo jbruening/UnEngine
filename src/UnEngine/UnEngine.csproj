@@ -71,6 +71,7 @@
     <Compile Include="Components\Animation.cs" />
     <Compile Include="Components\ConstantForce.cs" />
     <Compile Include="Components\Light.cs" />
+    <Compile Include="Data\Mesh.cs" />
     <Compile Include="Data\Texture.cs" />
     <Compile Include="Engine\IntDictionary.cs" />
     <Compile Include="Engine\ScriptableObject.cs" />

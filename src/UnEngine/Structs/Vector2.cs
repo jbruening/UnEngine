@@ -31,6 +31,11 @@ namespace UnityEngine
 			return new Vector2(v.x, v.y);
 		}
 
+		public static implicit operator Vector3(Vector2 v)
+		{
+			return new Vector3(v.x, v.y, 0f);
+		}
+
 		public static Vector2 operator +(Vector2 a, Vector2 b)
 		{
 			return new Vector2(a.x + b.x, a.y + b.y);
@@ -76,6 +81,14 @@ namespace UnityEngine
 					return Vector2.Zero;
 
 				return new Vector2(x / magnitude, y / magnitude);
+			}
+		}
+
+		public static Vector2 zero
+		{
+			get
+			{
+				return new Vector2(0f, 0f);
 			}
 		}
 
