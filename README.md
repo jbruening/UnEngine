@@ -6,9 +6,9 @@ a clone of the UnityEngine.dll - so you can write and test scripts outside of un
 Usage
 =====
 
-There are three build configurations - Debug, Release, and UnityTest
-Debug - compiles builds in UnEngine namespace and as UnEngine.dll - used for unit tests
-UnityTest - same as Debug, but outputs dll to the Plugins directory in the UnityComparisonTests unity project
+There are three build configurations - Debug, Release, and UnityTest  
+Debug - compiles builds in UnEngine namespace and as UnEngine.dll - used for unit tests  
+UnityTest - same as Debug, but outputs dll to the Plugins directory in the UnityComparisonTests unity project  
 Release - builds the dlls using same namespace and assembly name as UnityEngine.dll, so that no changes will have to be done in the referencing project
 
 How to use in your project
