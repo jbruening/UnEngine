@@ -112,6 +112,7 @@
     <Compile Include="Enums\LogType.cs" />
     <Compile Include="Utils\Gizmos.cs" />
     <Compile Include="Utils\Input.cs" />
+    <Compile Include="Utils\ISerializationCallbackReceiver.cs" />
     <Compile Include="Utils\JsonUtility.cs" />
     <Compile Include="Utils\LayerMask.cs" />
     <Compile Include="Utils\Mathf.cs" />
