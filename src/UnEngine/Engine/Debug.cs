@@ -61,5 +61,13 @@ namespace UnityEngine
 		{
             Console.WriteLine (message.ToString ());
 		}
+
+        public static void LogAssertion(object message) {
+            Console.WriteLine(message.ToString());
+        }
+
+        public static void LogAssertion(object message, Object context) {
+            Console.WriteLine(message.ToString());
+        }
     }
 }

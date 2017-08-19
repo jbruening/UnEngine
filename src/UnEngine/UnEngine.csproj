@@ -52,6 +52,9 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="YamlDotNet">
@@ -59,6 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assertions\Assert.cs" />
+    <Compile Include="Assertions\AssertException.cs" />
+    <Compile Include="Assertions\AssertionMessageUtils.cs" />
+    <Compile Include="Assertions\Comparers\FloatComparer.cs" />
     <Compile Include="Assets\Material.cs" />
     <Compile Include="Attributes\AddComponentMenuAttribute.cs" />
     <Compile Include="Attributes\ExecuteInEditModeAttribute.cs" />
@@ -83,6 +90,7 @@
     <Compile Include="GUI\GUILayout.cs" />
     <Compile Include="GUI\GUILayoutOptions.cs" />
     <Compile Include="GUI\GUIStyle.cs" />
+    <Compile Include="InternalEngine\UnityString.cs" />
     <Compile Include="Physics\Physics.cs" />
     <Compile Include="Physics\RaycastHit.cs" />
     <Compile Include="Structs\Bounds.cs" />
@@ -104,6 +112,7 @@
     <Compile Include="Enums\LogType.cs" />
     <Compile Include="Utils\Gizmos.cs" />
     <Compile Include="Utils\Input.cs" />
+    <Compile Include="Utils\JsonUtility.cs" />
     <Compile Include="Utils\LayerMask.cs" />
     <Compile Include="Utils\Mathf.cs" />
     <Compile Include="Structs\Matrix4x4.cs" />
