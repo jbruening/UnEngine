@@ -12,4 +12,7 @@
     <copyright>Copyright 2014</copyright>
     <tags></tags>
   </metadata>
+  <files>
+    <file src="bin\Debug\UnityEngine.dll" target="lib" />
+  </files>
 </package>
