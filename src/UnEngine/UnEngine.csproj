@@ -80,7 +80,11 @@
     <Compile Include="Components\Light.cs" />
     <Compile Include="Data\Mesh.cs" />
     <Compile Include="Data\Texture.cs" />
+    <Compile Include="Engine\DebugLogHandler.cs" />
+    <Compile Include="Engine\ILogger.cs" />
+    <Compile Include="Engine\ILogHandler.cs" />
     <Compile Include="Engine\IntDictionary.cs" />
+    <Compile Include="Engine\Logger.cs" />
     <Compile Include="Engine\ScriptableObject.cs" />
     <Compile Include="Engine\WaitForEndOfFrame.cs" />
     <Compile Include="Engine\WaitForSeconds.cs" />
