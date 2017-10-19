@@ -37,7 +37,7 @@ namespace UnityEngine {
 #if DEBUG
                 return true;
 #else
-                return false
+                return false;
 #endif
             }
         }

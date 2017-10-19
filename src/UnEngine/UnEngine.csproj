@@ -70,6 +70,7 @@
     <Compile Include="Attributes\AddComponentMenuAttribute.cs" />
     <Compile Include="Attributes\ExecuteInEditModeAttribute.cs" />
     <Compile Include="Attributes\HideInInspectorAttribute.cs" />
+    <Compile Include="Attributes\RequireComponent.cs" />
     <Compile Include="Attributes\RPC.cs" />
     <Compile Include="Attributes\SerializeFieldAttribute.cs" />
     <Compile Include="Components\Camera.cs" />
