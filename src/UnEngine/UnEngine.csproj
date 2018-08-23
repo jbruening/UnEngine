@@ -18,21 +18,21 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>..\..\bin\Debug\UnityEngine.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\UnityEngine.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <AssemblyName>UnityEngine</AssemblyName>
-    <OutputPath>..\..\bin\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\Release\UnityEngine.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\UnityEngine.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UnityTest|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +52,9 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="YamlDotNet">
@@ -59,10 +62,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assertions\Assert.cs" />
+    <Compile Include="Assertions\AssertException.cs" />
+    <Compile Include="Assertions\AssertionMessageUtils.cs" />
+    <Compile Include="Assertions\Comparers\FloatComparer.cs" />
     <Compile Include="Assets\Material.cs" />
     <Compile Include="Attributes\AddComponentMenuAttribute.cs" />
     <Compile Include="Attributes\ExecuteInEditModeAttribute.cs" />
     <Compile Include="Attributes\HideInInspectorAttribute.cs" />
+    <Compile Include="Attributes\RequireComponent.cs" />
     <Compile Include="Attributes\RPC.cs" />
     <Compile Include="Attributes\SerializeFieldAttribute.cs" />
     <Compile Include="Components\Camera.cs" />
@@ -73,7 +81,11 @@
     <Compile Include="Components\Light.cs" />
     <Compile Include="Data\Mesh.cs" />
     <Compile Include="Data\Texture.cs" />
+    <Compile Include="Engine\DebugLogHandler.cs" />
+    <Compile Include="Engine\ILogger.cs" />
+    <Compile Include="Engine\ILogHandler.cs" />
     <Compile Include="Engine\IntDictionary.cs" />
+    <Compile Include="Engine\Logger.cs" />
     <Compile Include="Engine\ScriptableObject.cs" />
     <Compile Include="Engine\WaitForEndOfFrame.cs" />
     <Compile Include="Engine\WaitForSeconds.cs" />
@@ -83,6 +95,7 @@
     <Compile Include="GUI\GUILayout.cs" />
     <Compile Include="GUI\GUILayoutOptions.cs" />
     <Compile Include="GUI\GUIStyle.cs" />
+    <Compile Include="InternalEngine\UnityString.cs" />
     <Compile Include="Physics\Physics.cs" />
     <Compile Include="Physics\RaycastHit.cs" />
     <Compile Include="Structs\Bounds.cs" />
@@ -104,6 +117,8 @@
     <Compile Include="Enums\LogType.cs" />
     <Compile Include="Utils\Gizmos.cs" />
     <Compile Include="Utils\Input.cs" />
+    <Compile Include="Utils\ISerializationCallbackReceiver.cs" />
+    <Compile Include="Utils\JsonUtility.cs" />
     <Compile Include="Utils\LayerMask.cs" />
     <Compile Include="Utils\Mathf.cs" />
     <Compile Include="Structs\Matrix4x4.cs" />
